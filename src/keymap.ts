@@ -18,9 +18,8 @@ const keyRows = [
         {top_id: "star", top: "*", bottom: "8"},
         {top_id: "paren-left", top: "(", bottom: "9"},
         {top_id: "paren-right", top: ")", bottom: "0"},
-        {top_id: "plus", top: "+", bottom_id: "equals", bottom: "="},
+        {top_id: "plus", top: "+", bottom_id: "equals", bottom: "="}
         // {bottom: "delete", length: '1-5'}
-        {bottom: "delete"}
     ],
     [
         {top_id: "pipe", top: "|", bottom_id: "back_slash", bottom: "\\"},
@@ -68,7 +67,8 @@ const keyRows = [
         {bottom_id: "shift-right", bottom: "shift"}
     ],
     [
-        {}, {}, {},
+        {}, {},
+        {bottom: "delete"},
         {length: '1-25'},
         {length: '5', bottom_id: "space", bottom: ""},
         {bottom: "return", length: '1-25'},
