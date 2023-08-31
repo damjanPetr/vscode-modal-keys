@@ -591,6 +591,19 @@ export async function enterMode(args: string | EnterModeArgs) {
     enterHook && newMode !== oldMode && await enterHook(oldMode)
     if (editor) {
         updateCursorAndStatusBar(editor)
+        if(visualFlag){
+            await vscode.commands.executeCommand(
+                "setContext",
+                "modalkeys.VISUAL",
+                false
+              );
+        }else{
+            await vscode.commands.executeCommand(
+                "setContext",
+                "modalkeys.VISUAL",
+                true
+              );
+        }
         await vscode.commands.executeCommand("setContext", "modalkeys.mode", keyMode)
     }
     docKeymap?.update(keyState, realMode(keyMode))
@@ -610,6 +623,19 @@ export async function restoreEditorMode(editor: vscode.TextEditor | undefined){
         updateCursorAndStatusBar(editor)
         const enterHook = modeHooks[keyMode]?.modeHooks?.enter
         enterHook && await enterHook(Normal, keyMode)
+        if(visualFlag){
+            await vscode.commands.executeCommand(
+                "setContext",
+                "modalkeys.VISUAL",
+                false
+              );
+        }else{
+            await vscode.commands.executeCommand(
+                "setContext",
+                "modalkeys.VISUAL",
+                true
+              );
+        }
         await vscode.commands.executeCommand("setContext", "modalkeys.mode", keyMode)
     }
 }
